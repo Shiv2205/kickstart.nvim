@@ -43,7 +43,7 @@ vim.pack.add { gh 'folke/which-key.nvim' }
       { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } }, -- Enable gitsigns recommended keymaps first
-      { 'gr', grokp = 'LSP Actions', mode = { 'n' } },
+      -- { 'gr', grokp = 'LSP Actions', mode = { 'n' } },
     },
   }
 
