@@ -1,23 +1,24 @@
-require('custom-init.utils')
+require('custom.init.utils')
 
 -- ============================================================
 -- SECTION 3: UI / CORE UX PLUGINS
 -- guess-indent, gitsigns, which-key, colorscheme, todo-comments, mini modules
 -- ============================================================
 do
-  -- [[ Installing and Configuring Plugins ]]
-  --
+  -- PLUGIN: [[ Installing and Configuring Plugins ]]
+  -- --
   -- To install a plugin simply call `vim.pack.add` with its git url.
   -- This will download the default branch of the plugin, which will usually be `main` or `master`
   -- You can also have more advanced specs, which we will talk about later.
-  --
+  -- --
   -- For most plugins its not enough to install them, you also need to call their `.setup()` to start them.
-  --
+  -- --
   -- For example, lets say we want to install `guess-indent.nvim` - a plugin for
   -- automatically detecting and setting the indentation.
   vim.pack.add { gh 'NMAC427/guess-indent.nvim' }
   require('guess-indent').setup {}
 
+  -- PLUGIN: Condition icons addition. Added if Nerd Font is true
   if vim.g.have_nerd_font then vim.pack.add { gh 'nvim-tree/nvim-web-devicons' } end
 
   vim.pack.add { gh 'lewis6991/gitsigns.nvim' }
@@ -31,7 +32,7 @@ do
     },
   }
 
-  -- Useful plugin to show you pending keybinds.
+  -- PLUGIN:  Useful plugin to show you pending keybinds.
 vim.pack.add { gh 'folke/which-key.nvim' }
   require('which-key').setup {
     -- Delay between pressing a key and opening which-key (milliseconds)
@@ -46,23 +47,29 @@ vim.pack.add { gh 'folke/which-key.nvim' }
     },
   }
 
-  -- [[ Colorscheme ]]
+  -- PLUGIN: [[ Colorscheme ]]
   -- You can easily change to a different colorscheme.
   -- Change the name of the colorscheme plugin below, and then
   -- change the command under that to load whatever the name of that colorscheme is.
-  -- 
+  -- --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
   vim.pack.add { gh 'navarasu/onedark.nvim' }
   require('onedark').setup{
-	  style = 'dark'
+	  style = 'cool'
   }
   require('onedark').load()
 
-  -- Highlight todo, notes, etc in comments
+  -- PLUGIN: Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
-  require('todo-comments').setup { signs = true }
+  require('todo-comments').setup {
+    signs = true,
+    merge_keywords = true,
+    keywords = {
+      PLUGIN = { icon = "󱢚 ", color = "info" }
+    }
+  }
 
-  -- [[ mini.nvim ]]
+  -- PLUGIN: [[ mini.nvim ]]
   --  A collection of various small independent plugins/modules
   vim.pack.add { gh 'nvim-mini/mini.nvim' }
 
@@ -92,8 +99,7 @@ vim.pack.add { gh 'folke/which-key.nvim' }
   --  You could remove this setup call if you don't like it,
   --  and try some other statusline plugin
   local statusline = require 'mini.statusline'
-  -- Set `use_icons` to true if you have a Nerd Font
-  statusline.setup { use_icons = vim.g.have_nerd_font }
+  statusline.setup { use_icons = vim.g.have_nerd_font } -- Set `use_icons` to true if you have a Nerd Font
 
   -- You can configure sections in the statusline by overriding their
   -- default behavior. For example, here we set the section for
@@ -101,9 +107,7 @@ vim.pack.add { gh 'folke/which-key.nvim' }
   ---@diagnostic disable-next-line: duplicate-set-field
   statusline.section_location = function() return '%2l:%-2v' end
 
-  -- ... and there is more!
-  --  Check out: https://github.com/nvim-mini/mini.nvim
-
+  -- PLUGIN: Bufferline plugin (shows open buffers as tabs)
   vim.pack.add { gh 'akinsho/bufferline.nvim' }
   require('bufferline').setup {}
 end

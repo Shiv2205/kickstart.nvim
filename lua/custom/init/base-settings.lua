@@ -43,6 +43,11 @@ do
     nbsp = '␣'
   }
                                                           -- NOTE:
+  vim.o.tabstop = 4                                       -- 1 tab = 4 spaces visual
+  vim.o.shiftwidth = 4                                    -- 1 tab = 4 spaces indentation
+  vim.o.expandtab = true                                  -- Use Spaces instead of tabs
+
+                                                          -- NOTE:
   vim.o.inccommand = 'split'                              -- Preview substitutions live, as you type!
   vim.o.cursorline = true                                 -- Show which line your cursor is on
   vim.o.scrolloff = 10                                    -- Minimal number of screen lines to keep above and below the cursor.
