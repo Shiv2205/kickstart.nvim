@@ -65,7 +65,8 @@ vim.pack.add { gh 'folke/which-key.nvim' }
     signs = true,
     merge_keywords = true,
     keywords = {
-      PLUGIN = { icon = "󱢚 ", color = "info" }
+      SECTION = { icon = "󱢚 ", color = "hint" },
+      PLUGIN = { icon = " ", color = "info" }
     }
   }
 
